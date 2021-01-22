@@ -6,7 +6,7 @@ using System.Text;
 
 namespace MetaProgrammProjekt
 {
-    class KonsolenHandler
+    class KonsolenHandler   ///Wrapper um string input in form von Parametern direkt an die Konsole zu senden
     {
         public void WriteToConsole(string input)
         {
