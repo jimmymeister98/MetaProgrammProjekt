@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30907.101
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MetaProgrammProjekt", "MetaProgrammProjekt\MetaProgrammProjekt.csproj", "{10A9B1C9-F7D2-4CF7-916F-823CF6DE116F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MetaProgrammProjekt", "MetaProgrammProjekt\MetaProgrammProjekt.csproj", "{10A9B1C9-F7D2-4CF7-916F-823CF6DE116F}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StringLibrary", "MetaProgrammProjekt\bin\Debug\net5.0-windows\StringLibrary\StringLibrary.csproj", "{62F7D913-F36A-4D20-B851-471C97DA9A12}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{10A9B1C9-F7D2-4CF7-916F-823CF6DE116F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{10A9B1C9-F7D2-4CF7-916F-823CF6DE116F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{10A9B1C9-F7D2-4CF7-916F-823CF6DE116F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{62F7D913-F36A-4D20-B851-471C97DA9A12}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{62F7D913-F36A-4D20-B851-471C97DA9A12}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{62F7D913-F36A-4D20-B851-471C97DA9A12}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{62F7D913-F36A-4D20-B851-471C97DA9A12}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
