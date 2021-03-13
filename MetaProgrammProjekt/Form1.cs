@@ -1,19 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Diagnostics;
-using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Text.Json;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using static MetaProgrammProjekt.JsonToClass;
-using static MetaProgrammProjekt.KonsolenHandler;
-using System.Runtime.InteropServices;
-using System.Threading;
 
 
 namespace MetaProgrammProjekt
@@ -28,31 +15,37 @@ namespace MetaProgrammProjekt
        
         private void button1_Click(object sender, EventArgs e)
         {
-            //var jsonText string = File.ReadAllText(@"./")
-            //AllocConsole();
             string filename = Path.GetFileNameWithoutExtension(textBox1.Text);
-            string pwd = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
-            Directory.SetCurrentDirectory(pwd);
-            KonsolenHandler inputHandler = new KonsolenHandler();
-            inputHandler.setPath(textBox2.Text);
-            
-            inputHandler.WriteToConsole("dotnet new classlib --force -o "+filename); //kann sein dass backslashes oder sonderzeichen mit backslash escaped werden müssen
-            Thread.Sleep(100);
             JsonToClass JsonHandler = new JsonToClass();
-            JsonToClass.ConvertJson(textBox1.Text,textBox2.Text+"\\"+filename);
-        }
-        [DllImport("kernel32.dll", SetLastError = true)]
-        [return: MarshalAs(UnmanagedType.Bool)]
-        static extern bool AllocConsole();
+            if (JsonToClass.CheckJson(textBox1.Text))//prüfe ob json gültig ist
+            {
+                if (Directory.Exists(textBox2.Text)) //prüfe ob ziel ordner existiert
+                {
 
-       
+                    KonsolenHandler inputHandler = new KonsolenHandler();
+                    inputHandler.setPath(textBox2.Text);
+                    inputHandler.WriteToConsole("dotnet new classlib --force -o " + filename); //generiere klassenbibliothek, überschreibe gleichnamige.
+                    JsonToClass.ConvertJson(textBox1.Text, textBox2.Text + "\\" + filename);
+
+                    MessageBox.Show("Klassenbibliothek erfolgreich erstellt!");
+                }
+                else
+                {
+                    MessageBox.Show("Ungültiger oder leerer Ziel-Pfad!");
+                }
+
+            }
+            
+        }
+
+
 
         private void button2_Click(object sender, EventArgs e)
         {
             OpenFileDialog choofdlog = new OpenFileDialog();
-            choofdlog.Filter = "All Files (*.*)|*.*";
+            choofdlog.Filter = "json files (*.json)|*.json";
             choofdlog.FilterIndex = 1;
-            choofdlog.Multiselect = true;
+            choofdlog.Multiselect = false;
 
             if (choofdlog.ShowDialog() == DialogResult.OK)
             {
@@ -73,5 +66,7 @@ namespace MetaProgrammProjekt
                 textBox2.Text = sSelectedPath;
             }
         }
+
+        
     }
 }

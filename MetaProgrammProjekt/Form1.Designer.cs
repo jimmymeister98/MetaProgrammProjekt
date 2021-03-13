@@ -40,7 +40,7 @@ namespace MetaProgrammProjekt
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(141, 288);
+            this.button1.Location = new System.Drawing.Point(145, 168);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(89, 23);
             this.button1.TabIndex = 0;
@@ -50,7 +50,7 @@ namespace MetaProgrammProjekt
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(12, 170);
+            this.button2.Location = new System.Drawing.Point(16, 50);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(58, 23);
             this.button2.TabIndex = 1;
@@ -60,7 +60,7 @@ namespace MetaProgrammProjekt
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(76, 170);
+            this.textBox1.Location = new System.Drawing.Point(80, 50);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(264, 23);
             this.textBox1.TabIndex = 2;
@@ -68,7 +68,7 @@ namespace MetaProgrammProjekt
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(76, 152);
+            this.label1.Location = new System.Drawing.Point(80, 32);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(59, 15);
             this.label1.TabIndex = 3;
@@ -76,14 +76,14 @@ namespace MetaProgrammProjekt
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(76, 229);
+            this.textBox2.Location = new System.Drawing.Point(80, 109);
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(264, 23);
             this.textBox2.TabIndex = 4;
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(12, 229);
+            this.button3.Location = new System.Drawing.Point(16, 109);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(58, 23);
             this.button3.TabIndex = 5;
@@ -94,7 +94,7 @@ namespace MetaProgrammProjekt
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(76, 211);
+            this.label2.Location = new System.Drawing.Point(80, 91);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(93, 15);
             this.label2.TabIndex = 6;
@@ -104,7 +104,7 @@ namespace MetaProgrammProjekt
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(371, 340);
+            this.ClientSize = new System.Drawing.Size(371, 219);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.textBox2);
@@ -113,7 +113,7 @@ namespace MetaProgrammProjekt
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "UML to Classlib Converter";
             this.ResumeLayout(false);
             this.PerformLayout();
 

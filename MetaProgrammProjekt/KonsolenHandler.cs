@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
+﻿using System.Diagnostics;
 using System.IO;
-using System.Text;
 
 namespace MetaProgrammProjekt
 {
@@ -21,9 +18,8 @@ namespace MetaProgrammProjekt
             info.FileName = "cmd.exe";
             info.RedirectStandardInput = true;
             info.UseShellExecute = false;
-            info.WorkingDirectory = @currPath;
+            info.WorkingDirectory = @currPath; //setze pfad da sonst default dir gewählt wird
             p.StartInfo = info;
-            p.StartInfo.WorkingDirectory = @currPath;
             p.Start();
             
 
@@ -35,7 +31,7 @@ namespace MetaProgrammProjekt
                     
                 }
             }
-            p.WaitForExit();
+            p.WaitForExit();    //Warten da Projekterstellung lange dauert und nachfolgender code(fast) immer schneller ist
 
             
         }
