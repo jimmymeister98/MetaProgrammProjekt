@@ -1,4 +1,5 @@
 ![.Net version ](https://img.shields.io/badge/.NET-5.0-blue)
+![Release](https://img.shields.io/github/downloads/jimmymeister98/MetaProgrammProjekt/total)
 # MetaProgrammProjekt
 A Program to generate a class library from a uml diagram (.json file)
 
