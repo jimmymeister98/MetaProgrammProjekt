@@ -1,13 +1,20 @@
+[![.Net version ](https://img.shields.io/badge/.NET-5.0-blue)]
 # MetaProgrammProjekt
-Projekt um (Hoffentlich) die Klausur zu bestehen und aus einem UML Diagramm eine Klassenbibliothek für VS zu erstellen
+A Program to generate a class library from a uml diagram (.json file)
 
-## Abhängigkeiten
--  Newtonsoft JSON Parser https://www.newtonsoft.com/json
+## Dependencies
+-  [Newtonsoft JSON Parser](https://www.newtonsoft.com/json) [![NuGet version (Newtonsoft.Json)](https://img.shields.io/nuget/v/Newtonsoft.Json.svg?style=flat-square)](https://www.nuget.org/packages/Newtonsoft.Json/)
 
-### Warum diese abhängigkeiten?
+### Why those Dependencies?
+Of course i could've written my own json reader but this one is proven good, free for commercial use and probably had more development time than me for this project.
 
- Der Parser ist sehr leicht zu bedienen, äußerst effizient und free for commercial use. Somit wäre es unklug eine eigene lösung zu entwickeln, da diese fehleranfälliger und unausgereifter wäre.
+## Usage
 
-## Was macht dieses Programm?
+You choose a .json file which was generated via [Umple](https://cruise.umple.org/umpleonline/). The program will then generate a classlib at the chosen destination and takes care
+of dependencies between the classes. Multiplicity is provided by generating a "listclass" which should act as a container for the objects of the correlating object.
 
-Es ließt eine .json formatierte Textdatei von umple ein und erstellt aus dieser ein Grundgerüst einer Klassenbibliothek mit abhängigkeiten und relationen.
+## Acknowledgements
+- Shoutouts to the Devs of the [Newtonsoft JSON Parser](https://www.newtonsoft.com/json) for their truly great work!
+
+
+
