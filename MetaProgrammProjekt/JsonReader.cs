@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
+using System.Windows.Forms.Design;
 using Newtonsoft.Json.Linq;
 
 namespace MetaProgrammProjekt
@@ -47,8 +49,8 @@ namespace MetaProgrammProjekt
                 ,"using System.Threading.Tasks;", "", "using System.IO;","using System.Text.Json;","","","","namespace "+classlibname+"{"
             }; //Standardinitialisierung mit den verschiedenen Bibliotheken und das setzen des namespaces der classlib
 
-            int objektCount = o1["umpleAssociations"].Count();       //zähle Objekte der Json des Arrays "umpleClasses"
-
+            int objektCount = o1["umpleAssociations"].Count();          //zähle Objekte der Json des Arrays "umpleAssociations"
+            int classCount = o1["umpleClasses"].Count();                //zähle Objekte der Json des Arrays "umpleClasses"
 
 
             ///Schreibe Basiscode in alle dateien
@@ -60,17 +62,19 @@ namespace MetaProgrammProjekt
                 string ID2relation = (string)o1["umpleAssociations"][i]["multiplicityTwo"]; //auslesen der Relation zw Objekt A und B
                 string[] tempID1 = {"", "    public class "+ID1+"{","    "};    //Klassenname = Obkjektname
                 string[] tempID2 = { "", "   public class " + ID2 + "{", " " }; //Klassenname = Obkjektname
+                string[] IdCounter = {"","       public int ID { get; }" };
                 if (!File.Exists(PathLib + "\\" + ID1 + ".cs")) //Wenn datei nicht existiert dann erstelle neue
                 {
                     File.WriteAllLines(PathLib + "\\" + ID1 + ".cs", lines);    //Schreibe Standardinitialisierung (s.o)
                     File.AppendAllLines(PathLib + "\\" + ID1 + ".cs", tempID1); //füge Klassenname Hinzu
-                    
+                    File.AppendAllLines(PathLib + "\\" + ID1 + ".cs", IdCounter); //ID counter
                 }
 
                 if (!File.Exists(PathLib + "\\" + ID2 + ".cs")) 
                 {
-                    File.WriteAllLines(PathLib + "\\" + ID2 + ".cs", lines);    
-                    File.AppendAllLines(PathLib + "\\" + ID2 + ".cs", tempID2); 
+                    File.WriteAllLines(PathLib + "\\" + ID2 + ".cs", lines);
+                    File.AppendAllLines(PathLib + "\\" + ID2 + ".cs", tempID2);
+                    File.AppendAllLines(PathLib + "\\" + ID2 + ".cs", IdCounter); //ID counter
                 }
 
                 if (ID1relation != "1")//Wenn eine relation mit nur einem objekt dann Keine lise erstellen
@@ -113,8 +117,8 @@ namespace MetaProgrammProjekt
                 File.AppendAllLines(PathLib + "\\" + ID2 + ".cs", tempID2); //füge relationen hinzu
                 //File.AppendAllLines(PathLib + "\\" + ID2 + "Liste.cs", tempID2);
             }
-            int classCount = o1["umpleClasses"].Count();
 
+            
             ///Freistehende Klassen Initialisieren
 
             for (int i = 0; i < classCount; i++)
@@ -138,13 +142,45 @@ namespace MetaProgrammProjekt
                 int attribcount = (int) o1["umpleClasses"][i]["attributes"].Count();
                 for (int j = 0; j < attribcount; j++)
                 {
-                    string[] attribID = {"        "+(string)o1["umpleClasses"][i]["attributes"][j]["type"] + " " + (string)o1["umpleClasses"][i]["attributes"][j]["name"] + ";"};
+                    string[] attribID = {"       "+(string)o1["umpleClasses"][i]["attributes"][j]["type"] + " " + (string)o1["umpleClasses"][i]["attributes"][j]["name"] + ";"};
                     File.AppendAllLines(PathLib + "\\" + ID1 + ".cs", attribID); //füge relationen hinzu
                 }
             }
 
-            
+            ///Hinzufügen der Konstruktoren
 
+            //for (int i = 0; i < classCount; i++)
+            //{
+            //    string dateiname = (string) o1["umpleClasses"][i]["id"];
+            //    string[] Konstruktor = {"", "              public "+dateiname+"("};
+                
+            //    if (File.Exists(PathLib + "\\" + dateiname + ".cs"))
+            //        File.AppendAllLines(PathLib + "\\" + dateiname + ".cs", Konstruktor); //füge "public klassenname(" hinzu
+            //}
+            List<string> accesscheck = new List<string>();
+            for (int i = 0; i < objektCount; i++)
+                {
+                    string ID1 = (string)o1["umpleAssociations"][i]["classOneId"]; 
+                    string ID2 = (string)o1["umpleAssociations"][i]["classTwoId"];
+                    
+                if ((string)o1["umpleAssociations"][i]["multiplicityOne"] == "1")
+                    {
+                    string[] tempID1 = { "         public " + ID2 + "(" + ID1 + " " + ID1 + "obj, int " + ID2 + "ID)", "        {", "        " + ID1 + " = " + ID1 + "obj;", "        ID = " + ID2 + "ID;", "        }" };
+                    File.AppendAllLines(PathLib + "\\" + ID2 + ".cs", tempID1); //füge relationen hinzu
+                    accesscheck.Add(ID2); //schreibe welche dateien "berührt" worden sind um festzustellen wo konstruktoren fehlen
+                    }
+
+                }
+            //Basiskonstruktoren zu Unbehandelten Klassen hinzufügen
+            for (int i = 0; i < classCount; i++)
+            {
+                string classname = (string)o1["umpleClasses"][i]["id"];
+                string[] basisKonstruktor = {"       public " + classname + "()"};
+                if (!accesscheck.Contains(classname))
+                {
+                    File.AppendAllLines(PathLib+"\\" + classname+".cs",basisKonstruktor);
+                }
+            }
 
             for (int i = 0; i < classCount; i++)
             {

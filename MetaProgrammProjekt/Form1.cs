@@ -42,7 +42,7 @@ namespace MetaProgrammProjekt
 
         private void button2_Click(object sender, EventArgs e)
         {
-            OpenFileDialog choofdlog = new OpenFileDialog();
+            OpenFileDialog choofdlog = new OpenFileDialog(); //choosefiledialog
             choofdlog.Filter = "json files (*.json)|*.json";
             choofdlog.FilterIndex = 1;
             choofdlog.Multiselect = false;
@@ -57,7 +57,7 @@ namespace MetaProgrammProjekt
 
         private void button3_Click(object sender, EventArgs e)
         {
-            FolderBrowserDialog fbd = new FolderBrowserDialog();
+            FolderBrowserDialog fbd = new FolderBrowserDialog(); //folderbrowserdialog
             fbd.Description = "Custom Description";
 
             if (fbd.ShowDialog() == DialogResult.OK)
