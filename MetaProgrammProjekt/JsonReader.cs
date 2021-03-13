@@ -49,6 +49,8 @@ namespace MetaProgrammProjekt
 
             int objektCount = o1["umpleAssociations"].Count();       //zähle Objekte der Json des Arrays "umpleClasses"
 
+
+
             ///Schreibe Basiscode in alle dateien
             for (int i = 0; i < objektCount; i++)
             {
@@ -96,19 +98,54 @@ namespace MetaProgrammProjekt
                     }
                 }
             }
+
+
+
             ///Hinzufügen der Relationen
             for (int i = 0; i < objektCount; i++)
             {
                 string ID1 = (string)o1["umpleAssociations"][i]["classOneId"];
                 string ID2 = (string)o1["umpleAssociations"][i]["classTwoId"];
-                string[] tempID1 = { "       public " + ID2 + " " + ID2 + " {set;}"};   
-                string[] tempID2 = { "       public " + ID1 + " " + ID1 + " {set;}"};   
+                string[] tempID1 = { "       public " + ID2 + " " + ID2 + " {get; set;}"};   
+                string[] tempID2 = { "       public " + ID1 + " " + ID1 + " {get; set;}"};   
                 File.AppendAllLines(PathLib + "\\" + ID1 + ".cs", tempID1); //füge relationen hinzu
                 //File.AppendAllLines(PathLib + "\\" + ID1 + "Liste.cs", tempID1);
                 File.AppendAllLines(PathLib + "\\" + ID2 + ".cs", tempID2); //füge relationen hinzu
                 //File.AppendAllLines(PathLib + "\\" + ID2 + "Liste.cs", tempID2);
             }
             int classCount = o1["umpleClasses"].Count();
+
+            ///Freistehende Klassen Initialisieren
+
+            for (int i = 0; i < classCount; i++)
+            {
+                string dateiname = (string)o1["umpleClasses"][i]["id"];
+                string[] tempID1 = { "", "    public class " + dateiname + "{", "    " };    //Klassenname = Obkjektname
+                if (!File.Exists(PathLib + "\\" + dateiname + ".cs"))
+                {
+                     
+                     File.WriteAllLines(PathLib + "\\" + dateiname + ".cs", lines);
+                     File.AppendAllLines(PathLib + "\\" + dateiname + ".cs", tempID1);
+                }
+                 
+            }
+        
+
+            ///Hinzufügen der attribute
+            for (int i = 0; i < classCount; i++)
+            {
+                string ID1 = (string)o1["umpleClasses"][i]["id"];
+                int attribcount = (int) o1["umpleClasses"][i]["attributes"].Count();
+                for (int j = 0; j < attribcount; j++)
+                {
+                    string[] attribID = {"        "+(string)o1["umpleClasses"][i]["attributes"][j]["type"] + " " + (string)o1["umpleClasses"][i]["attributes"][j]["name"] + ";"};
+                    File.AppendAllLines(PathLib + "\\" + ID1 + ".cs", attribID); //füge relationen hinzu
+                }
+            }
+
+            
+
+
             for (int i = 0; i < classCount; i++)
             {
                 string dateiname = (string)o1["umpleClasses"][i]["id"];
