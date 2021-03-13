@@ -34,6 +34,7 @@ Diese sollte die Abhängigkeiten zwischen den Objekten und deren Attribute darst
 einen Default Konstruktor erhalten.
 
 ## Benutzung
+- Herunterladen des [Programmes](https://github.com/jimmymeister98/MetaProgrammProjekt/releases) (mit einer Test Json)
 - Auswählen der .Json datei, sollte diese nicht von umple kommen so erscheint eine fehlermeldung
 - Auswählen des Zielordner in der die Klassenbibliothek erstellt werden soll (Name der Klassenbibliothek = Name der Json)
 - Auf Konvertieren Clicken.
