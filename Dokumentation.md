@@ -33,6 +33,31 @@ Diese sollte die Abhängigkeiten zwischen den Objekten und deren Attribute darst
   Kompositionen werden in den Konstruktoren realisiert. Dateien die eine Komposition mit einer anderen Datei eingehen werden erfasst. So können "Unberührte" bzw Kernklassen
 einen Default Konstruktor erhalten.
 
+## Was ist was?
+
+- JsonReader.cs
+  - Diese Klasse prüft ob die json von Umple erstellt wurde, wenn ja dann:
+  - Lese Json ein `File.ReadAllText(PathJson)`
+  - Basisinitialisierung (using direktiven, setzen des Namespaces,Erstellung der Individuellen Daten)
+  - falls 1..* relation zwischen 2 Objekten dann erstelle Listenklasse.
+  - Relationen Hinzufügen durch auslesen der `"umpleAssociations"`
+  - Freistehende Klassen ohne Relationen Initialisieren
+  - Attribute mithilfe `"[umpleClasses][attributes]"` hinzufügen.
+  - Kompositionen und dementsprechende Konstruktoren mithilfe `"[MultiplicityOne]"` hinzufügen
+  - Basiskonstruktoren zu Kernklassen hinzufügen.
+  - Ausstehende Brackets schließen.
+
+- KonsolenHandler.cs
+  - Festlegen des Pfades für den Start der Cmd.exe
+  - Von diesem Pfad wird `"dotnet new classlib --force -o " + filename` in die Konsole weitergeleitet um das Erstellen eines Projektes zu beginnen.
+  - Warten auf abschluss dieses Prozesses, da ohne diesen der JsonReader keine Dateien erstellen kann, weil der Ordner fehlt.
+
+- Form1.cs
+  - User-Interface
+  - Handling des Explorers
+  - Prüfen der Pfade
+  - Aufrufen der `JsonReader.cs` und `KonsolenHandler.cs`
+
 ## Benutzung
 - Herunterladen des [Programmes](https://github.com/jimmymeister98/MetaProgrammProjekt/releases) (mit einer Test Json)
 - Auswählen der .Json datei, sollte diese nicht von umple kommen so erscheint eine fehlermeldung
