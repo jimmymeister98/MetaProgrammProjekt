@@ -8,6 +8,7 @@ Diese sollte die Abhängigkeiten zwischen den Objekten und deren Attribute darst
 ## Allgemeine Anforderungen
 - Einlesen eines UML diagrammes, welches im Json format abgespeichert wurde
 - Umwandeln dieser in Klassen mit Attributen & Listen
+- Erstellen einer Klassenbibliothek
 - Dokumentation
 
 ## Lösungsansatz 
