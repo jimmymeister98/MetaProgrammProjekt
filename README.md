@@ -14,6 +14,10 @@ Of course i could've written my own json reader but this one is proven good, fre
 You choose a .json file which was generated via [Umple](https://cruise.umple.org/umpleonline/). The program will then generate a classlib at the chosen destination and takes care
 of dependencies between the classes. Multiplicity is provided by generating a "listclass" which should act as a container for the objects of the correlating object.
 
+## Download
+
+Download the current version from the [releases](https://github.com/jimmymeister98/MetaProgrammProjekt/releases/tag/v1.0) page.
+
 ## Acknowledgements
 - Shoutouts to the Devs of the [Newtonsoft JSON Parser](https://www.newtonsoft.com/json) for their truly great work!
 
