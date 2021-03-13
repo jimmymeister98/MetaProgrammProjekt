@@ -4,10 +4,10 @@
 A Program to generate a class library from a uml diagram (.json file)
 
 ## Dependencies
--  [Newtonsoft JSON Parser](https://www.newtonsoft.com/json) [![NuGet version (Newtonsoft.Json)](https://img.shields.io/nuget/v/Newtonsoft.Json.svg?style=flat-square)](https://www.nuget.org/packages/Newtonsoft.Json/)
+-  [Newtonsoft Json.NET](https://www.newtonsoft.com/json) [![NuGet version (Newtonsoft.Json)](https://img.shields.io/nuget/v/Newtonsoft.Json.svg?style=flat-square)](https://www.nuget.org/packages/Newtonsoft.Json/)
 
 ### Why those Dependencies?
-Of course i could've written my own json reader but this one is proven good, free for commercial use and probably had more development time than me for this project.
+Of course i could've written my own json parser but this one is proven good, free for commercial use and probably had more development time than me for this project.
 
 ## Usage
 
@@ -19,7 +19,7 @@ of dependencies between the classes. Multiplicity is provided by generating a "l
 Download the current version from the [releases](https://github.com/jimmymeister98/MetaProgrammProjekt/releases/tag/v1.0) page.
 
 ## Acknowledgements
-- Shoutouts to the Devs of the [Newtonsoft JSON Parser](https://www.newtonsoft.com/json) for their truly great work!
+- Shoutouts to the Devs of the [Newtonsoft Json.NET](https://www.newtonsoft.com/json) for their truly great work!
 
 
 
