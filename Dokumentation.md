@@ -1,5 +1,8 @@
 ![.Net version ](https://img.shields.io/badge/.NET-5.0-blue)
 # MetaProgrammProjekt Dokumentation
+Author: Jimmy Neitzert
+Mat.Nr: Der E-Mail zu entnehmen.
+Stand: 15.03.2021
 
 ## Ursprüngliches Problem
 Das ursprüngliche Problem, bzw. die Aufgabe war es aus einem UML Diagramm (erstellt mit [UmpleOnline](https://cruise.umple.org/umpleonline/) eine Klassenbibliothek zu erstellen.
@@ -19,7 +22,7 @@ Diese sollte die Abhängigkeiten zwischen den Objekten und deren Attribute darst
 - Erstellen der Dateien über `File.WriteAllLines(path,string[]`
 - Schreiben in die Dateien über `File.AppendAllLines(path,string)` und `File.WriteAllLines(path,string[]`
 
-## Komplikationen und deren Lösungen (Designentscheidungen)
+## Komplikationen und deren Lösungen & Designentscheidungen
 - 1..N und 1..* Beziehungen
 
   In diesem Fall wird eine Listenklasse erstellt(anstatt Plural vom Klassennamen -> KlassennameListe)
@@ -32,6 +35,12 @@ Diese sollte die Abhängigkeiten zwischen den Objekten und deren Attribute darst
 
   Kompositionen werden in den Konstruktoren realisiert. Dateien die eine Komposition mit einer anderen Datei eingehen werden erfasst. So können "Unberührte" bzw Kernklassen
 einen Default Konstruktor erhalten.
+
+- Wieso so viele for-loops? (JsonReader.cs)
+
+ Die for-loops dienen als "Module", jeder for-loop erfüllt seine Aufgabe wie z.B: Anlegen der Datei, Hinzufügen von Abhängigkeiten usw. Durch diese Modularität ist es einfach 
+das Programm zu Debuggen oder zu erweitern, da man immer genau weiss was, woher kommt und wohin es soll.
+
 
 ## Was ist was?
 
