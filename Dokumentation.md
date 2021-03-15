@@ -40,8 +40,8 @@ einen Default Konstruktor erhalten.
 
 - Wieso so viele for-loops? (JsonReader.cs)
 
-  Die for-loops dienen als "Module", jeder for-loop erfüllt seine Aufgabe wie z.B: Anlegen der Datei, Hinzufügen von Abhängigkeiten usw. Durch diese Modularität ist es einfach 
-das Programm zu Debuggen oder zu erweitern, da man immer genau weiss was, woher kommt und wohin es soll.
+  Die for-loops dienen als "Module", jeder for-loop erfüllt seine Aufgabe wie z.B: anlegen der Datei, hinzufügen von Abhängigkeiten usw. Durch diese Modularität ist es einfach 
+das Programm zu debuggen oder zu erweitern, da man immer genau weiss was, woher kommt und wohin es soll.
 
 
 ## Was ist was?
@@ -52,7 +52,7 @@ das Programm zu Debuggen oder zu erweitern, da man immer genau weiss was, woher 
   - Basisinitialisierung (using direktiven, setzen des Namespaces,Erstellung der Individuellen Daten)
   - falls 1..* relation zwischen 2 Objekten dann erstelle Listenklasse.
   - Relationen Hinzufügen durch auslesen der `"umpleAssociations"`
-  - Freistehende Klassen ohne Relationen Initialisieren
+  - Freistehende Klassen ohne Relationen initialisieren
   - Attribute mithilfe `"[umpleClasses][attributes]"` hinzufügen.
   - Kompositionen und dementsprechende Konstruktoren mithilfe `"[MultiplicityOne]"` hinzufügen
   - Basiskonstruktoren zu Kernklassen hinzufügen.
@@ -61,7 +61,7 @@ das Programm zu Debuggen oder zu erweitern, da man immer genau weiss was, woher 
 - KonsolenHandler.cs
   - Festlegen des Pfades für den Start der Cmd.exe
   - Von diesem Pfad wird `"dotnet new classlib --force -o " + filename` in die Konsole weitergeleitet um das Erstellen eines Projektes zu beginnen.
-  - Warten auf abschluss dieses Prozesses, da ohne diesen der JsonReader keine Dateien erstellen kann, weil der Ordner fehlt.
+  - Warten auf Abschluss dieses Prozesses, da ohne diesen der JsonReader keine Dateien erstellen kann, weil der Ordner fehlt.
 
 - Form1.cs
   - User-Interface
@@ -73,4 +73,4 @@ das Programm zu Debuggen oder zu erweitern, da man immer genau weiss was, woher 
 - Herunterladen des [Programmes](https://github.com/jimmymeister98/MetaProgrammProjekt/releases) (mit einer Test Json)
 - Auswählen der .Json datei, sollte diese nicht von umple kommen so erscheint eine fehlermeldung
 - Auswählen des Zielordner in der die Klassenbibliothek erstellt werden soll (Name der Klassenbibliothek = Name der Json)
-- Auf Konvertieren Clicken.
+- Auf Konvertieren clicken.
