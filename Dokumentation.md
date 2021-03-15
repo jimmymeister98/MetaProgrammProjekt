@@ -1,8 +1,10 @@
 ![.Net version ](https://img.shields.io/badge/.NET-5.0-blue)
 # MetaProgrammProjekt Dokumentation
-Author: Jimmy Neitzert
-Mat.Nr: Der E-Mail zu entnehmen.
-Stand: 15.03.2021
+* Author: Jimmy Neitzert
+
+* Mat.Nr: Der E-Mail zu entnehmen. 
+
+* Stand: 15.03.2021
 
 ## Ursprüngliches Problem
 Das ursprüngliche Problem, bzw. die Aufgabe war es aus einem UML Diagramm (erstellt mit [UmpleOnline](https://cruise.umple.org/umpleonline/) eine Klassenbibliothek zu erstellen.
