@@ -19,7 +19,7 @@ of dependencies between the classes. Multiplicity is provided by generating a "l
 Download the current version from the [releases](https://github.com/jimmymeister98/MetaProgrammProjekt/releases/tag/v1.0) page.
 
 ## Acknowledgements
-- Shoutouts to the Devs of the [Newtonsoft Json.NET](https://www.newtonsoft.com/json) for their truly great work!
+- Shoutouts to the Devs of [Newtonsoft Json.NET](https://www.newtonsoft.com/json) for their truly great work!
 
 
 
