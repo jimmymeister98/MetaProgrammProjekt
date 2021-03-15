@@ -38,7 +38,7 @@ einen Default Konstruktor erhalten.
 
 - Wieso so viele for-loops? (JsonReader.cs)
 
- Die for-loops dienen als "Module", jeder for-loop erfüllt seine Aufgabe wie z.B: Anlegen der Datei, Hinzufügen von Abhängigkeiten usw. Durch diese Modularität ist es einfach 
+  Die for-loops dienen als "Module", jeder for-loop erfüllt seine Aufgabe wie z.B: Anlegen der Datei, Hinzufügen von Abhängigkeiten usw. Durch diese Modularität ist es einfach 
 das Programm zu Debuggen oder zu erweitern, da man immer genau weiss was, woher kommt und wohin es soll.
 
 
