@@ -19,7 +19,7 @@ namespace MetaProgrammProjekt
             try
             {
                 JObject test = JObject.Parse(File.ReadAllText(PathJson)); //lese json ein
-                string dateiname = (string)test["umpleClasses"][0]["id"];
+                string dateiname = (string)test["umpleClasses"][0]["id"]; 
                 Console.WriteLine(dateiname);
                 return true;
             }
@@ -46,7 +46,7 @@ namespace MetaProgrammProjekt
             string[] lines =
             {
                 "using System;", "using System.Collections;", "using System.Linq;", "using System.Reflection.Metadata;", "using System.Text;"
-                ,"using System.Threading.Tasks;", "", "using System.IO;","using System.Text.Json;","","","","namespace "+classlibname+"{"
+                ,"using System.Threading.Tasks;", "", "using System.IO;","using System.Text.Json;","using System.Collections.Generic;","","","","namespace "+classlibname+"{"
             }; //Standardinitialisierung mit den verschiedenen Bibliotheken und das setzen des namespaces der classlib
 
             int objektCount = o1["umpleAssociations"].Count();          //zähle Objekte der Json des Arrays "umpleAssociations"
@@ -142,28 +142,20 @@ namespace MetaProgrammProjekt
                 int attribcount = (int) o1["umpleClasses"][i]["attributes"].Count();
                 for (int j = 0; j < attribcount; j++)
                 {
-                    string[] attribID = {"       "+(string)o1["umpleClasses"][i]["attributes"][j]["type"] + " " + (string)o1["umpleClasses"][i]["attributes"][j]["name"] + ";"};
+                    string[] attribID = {"       "+(string)o1["umpleClasses"][i]["attributes"][j]["type"] + " " + (string)o1["umpleClasses"][i]["attributes"][j]["name"] + ";"}; //hole Attribut + Datentyp aus Json
                     File.AppendAllLines(PathLib + "\\" + ID1 + ".cs", attribID); //füge relationen hinzu
                 }
             }
 
             ///Hinzufügen der Konstruktoren
 
-            //for (int i = 0; i < classCount; i++)
-            //{
-            //    string dateiname = (string) o1["umpleClasses"][i]["id"];
-            //    string[] Konstruktor = {"", "              public "+dateiname+"("};
-                
-            //    if (File.Exists(PathLib + "\\" + dateiname + ".cs"))
-            //        File.AppendAllLines(PathLib + "\\" + dateiname + ".cs", Konstruktor); //füge "public klassenname(" hinzu
-            //}
             List<string> accesscheck = new List<string>();
             for (int i = 0; i < objektCount; i++)
                 {
                     string ID1 = (string)o1["umpleAssociations"][i]["classOneId"]; 
                     string ID2 = (string)o1["umpleAssociations"][i]["classTwoId"];
                     
-                if ((string)o1["umpleAssociations"][i]["multiplicityOne"] == "1")
+                if ((string)o1["umpleAssociations"][i]["multiplicityOne"] == "1") //wenn eine Komposition dann...
                     {
                     string[] tempID1 = { "         public " + ID2 + "(" + ID1 + " " + ID1 + "obj, int " + ID2 + "ID)", "        {", "        " + ID1 + " = " + ID1 + "obj;", "        ID = " + ID2 + "ID;", "        }" };
                     File.AppendAllLines(PathLib + "\\" + ID2 + ".cs", tempID1); //füge relationen hinzu
@@ -175,8 +167,8 @@ namespace MetaProgrammProjekt
             for (int i = 0; i < classCount; i++)
             {
                 string classname = (string)o1["umpleClasses"][i]["id"];
-                string[] basisKonstruktor = {"       public " + classname + "()"};
-                if (!accesscheck.Contains(classname))
+                string[] basisKonstruktor = {"       public " + classname + "(){}"};
+                if (!accesscheck.Contains(classname)) //Wenn der Konstruktor noch nicht geschrieben wurde dann..
                 {
                     File.AppendAllLines(PathLib+"\\" + classname+".cs",basisKonstruktor);
                 }
